@@ -54,7 +54,7 @@ if(!isset($_SESSION['dokter'])) {
               <span class="hide-menu">MENU</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="jadwal_periksa_dok.php" aria-expanded="false">
+              <a class="sidebar-link" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/jadwal_periksa_dok.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
@@ -62,7 +62,7 @@ if(!isset($_SESSION['dokter'])) {
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="periksa.php" aria-expanded="false">
+              <a class="sidebar-link" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/periksa.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
@@ -101,7 +101,7 @@ if(!isset($_SESSION['dokter'])) {
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
-                    <a href="profil.php" class="d-flex align-items-center gap-2 dropdown-item">
+                    <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/profil.php" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
                       <p class="mb-0 fs-3">Data Diri Saya</p>
                     </a>

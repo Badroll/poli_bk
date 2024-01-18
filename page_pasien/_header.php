@@ -54,7 +54,7 @@ if(!isset($_SESSION['pasien'])) {
               <span class="hide-menu">MENU</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="periksa.php" aria-expanded="false">
+              <a class="sidebar-link" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/periksa.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
