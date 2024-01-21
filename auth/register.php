@@ -34,25 +34,24 @@ if (isset($_SESSION['pasien'])) {
                 <p class="text-center">Form Pendaftaran Pasien</p>
 
              
-                <form action="" method="POST" class="navbar-form">
+                <form action="register.php" method="POST" class="navbar-form">
                   <?php
                     if (isset($_POST['register'])) {
                         $nama = trim(mysqli_real_escape_string($con, $_POST['nama']));
+                        $password = trim(mysqli_real_escape_string($con, $_POST['password']));
                         $alamat = trim(mysqli_real_escape_string($con, $_POST['alamat']));
                         $no_ktp = trim(mysqli_real_escape_string($con, $_POST['no_ktp']));
                         $no_hp = trim(mysqli_real_escape_string($con, $_POST['no_hp']));
-
-                        $sql_cek = mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM pasien WHERE no_ktp = '$no_ktp' ")) or die(mysqli_error($con));
+                        $sql_cek = mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM pasien WHERE no_ktp = '$no_ktp' "));
                         if ($sql_cek != null) {
                             echo '<script>alert("No. KTP sudah terdaftar"); window.history.back();</script>';
                         }
                         else{
                           $pasiens = mysqli_fetch_all(mysqli_query($con, "SELECT * FROM pasien"), MYSQLI_ASSOC);
                           $no_rm = date("Ym")."-".(count($pasiens) + 1);
-
-                          $sql_register = mysqli_query($con, "INSERT INTO pasien (nama, alamat, no_ktp, no_hp, no_rm) VALUES ('$nama', '$alamat', '$no_ktp', '$no_hp', '$no_rm)") or die(mysqli_error($con));
+                          $sql_register = mysqli_query($con, "INSERT INTO pasien (nama, password, alamat, no_ktp, no_hp, no_rm) VALUES ('$nama', '$password', '$alamat', '$no_ktp', '$no_hp', '$no_rm')") or die(mysqli_error($con));
                           if ($sql_register) {
-                              echo '<script>alert("Registration successful! Please login."); window.location.href="'.base_url().'";</script>';
+                              echo '<script>alert("Registration successful! Please login."); window.location.href="'.base_url('auth/login_pasien.php').'";</script>';
                           } else {
                               echo '<div class="alert alert-danger alert-dismissable" role="alert">
                                       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -79,6 +78,10 @@ if (isset($_SESSION['pasien'])) {
                   <div class="mb-3">
                     <label for="exampleInputNoHP" class="form-label">No. HP</label>
                     <input type="text" class="form-control" name="no_hp" id="exampleInputNoHP" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="exampleInputPassword" required>
                   </div>
                   <input type="submit" name="register" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" value="Register">
                   <div class="d-flex align-items-center justify-content-center">

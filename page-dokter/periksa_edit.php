@@ -169,8 +169,9 @@
             JOIN obat as B ON A.id_obat = B.id
             WHERE A.id_periksa = '$value[periksa_id]'
         "), MYSQLI_ASSOC);
-        $value["obat"] = $riwayat_obat;
+        $riwayat[$key]["obat"] = $riwayat_obat;
     }
+    //dd($riwayat);
 
 ?>
 
@@ -258,17 +259,29 @@
                                                     <th class="border-bottom-0">
                                                         <h6 class="fw-semibold mb-0">Hari/Tanggal</h6>
                                                     </th>
+                                                    <th class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-0">Catatan</h6>
+                                                    </th>
+                                                    <th class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-0">Obat</h6>
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
                                                     foreach($riwayat as $key => $value){
+                                                        $obat = "";
+                                                        foreach($value["obat"] as $key2 => $value2){
+                                                            $obat .= "- " . $value2["obat_nama_obat"] . "<br>";
+                                                        }
                                                 ?>
                                                 <tr>
                                                     <td><?php echo $key+1;?></td>
                                                     <td><?php echo $value['poli_nama'];?> <br> dokter <?php echo $value['dokter_nama'];?></td>
                                                     <td><?php echo $value['keluhan'];?></td>
                                                     <td><?php echo $value['jadwal_hari'] . "<br>" . tglIndo($value['periksa_tgl_periksa'], "LONG");?></td>
+                                                    <td><?php echo $value['periksa_catatan'];?></td>
+                                                    <td><?php echo $obat;?></td>
                                                 </tr>
                                                 <?php } ?>
                                             </tbody>

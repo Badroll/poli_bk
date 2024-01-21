@@ -69,6 +69,14 @@ if(!isset($_SESSION['dokter'])) {
                 <span class="hide-menu">DATA PERIKSA</span>
               </a>
             </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/riwayat.php" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">RIWAYAT PASIEN</span>
+              </a>
+            </li>
         <!-- End Sidebar navigation -->
       </div>
       <!-- End Sidebar scroll-->

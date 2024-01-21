@@ -7,8 +7,8 @@ date_default_timezone_set('Asia/Jakarta');
 session_start();
 
 //koneksi
-//$con = mysqli_connect('localhost', 'root', '','klinik_bk2');
-$con = mysqli_connect('localhost', 'user_2', 'mySQLuser_2','klinik_bk2');
+$con = mysqli_connect('localhost', 'root', '','klinik_bk2');
+//$con = mysqli_connect('localhost', 'user_2', 'mySQLuser_2','klinik_bk2');
 if(mysqli_connect_errno()){
     echo mysqli_connect_error();
 }
@@ -16,8 +16,8 @@ if(mysqli_connect_errno()){
 //fungsi base_url
 function base_url($url = null){
     //$base_url = "http://localhost/poli_bk";
-    //$base_url = "http://127.0.0.1:8005";
-    $base_url = "http://62.72.51.244:8005";
+    $base_url = "http://127.0.0.1:8005";
+    //$base_url = "http://62.72.51.244:8005";
     if($url != null){
         return $base_url. "/".$url;
     }else {
@@ -116,8 +116,7 @@ function tglIndo($tgl, $mode, $forceWithTime = false) {
 
 
 function dd($param){
-    var_dump($param);
-    die("dd");
+    echo(json_encode($param));
     exit;
 }
 
