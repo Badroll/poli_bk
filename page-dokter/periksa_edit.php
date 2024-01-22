@@ -270,9 +270,9 @@
                                             <tbody>
                                                 <?php
                                                     foreach($riwayat as $key => $value){
-                                                        $obat = "";
+                                                        $displayObat = "";
                                                         foreach($value["obat"] as $key2 => $value2){
-                                                            $obat .= "- " . $value2["obat_nama_obat"] . "<br>";
+                                                            $displayObat .= "- " . $value2["obat_nama_obat"] . "<br>";
                                                         }
                                                 ?>
                                                 <tr>
@@ -281,7 +281,7 @@
                                                     <td><?php echo $value['keluhan'];?></td>
                                                     <td><?php echo $value['jadwal_hari'] . "<br>" . tglIndo($value['periksa_tgl_periksa'], "LONG");?></td>
                                                     <td><?php echo $value['periksa_catatan'];?></td>
-                                                    <td><?php echo $obat;?></td>
+                                                    <td><?php echo $displayObat;?></td>
                                                 </tr>
                                                 <?php } ?>
                                             </tbody>
